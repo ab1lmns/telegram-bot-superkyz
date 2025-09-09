@@ -6,7 +6,7 @@ from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKe
 API_TOKEN = "8415854174:AAH-YGPRDmThzVFlMDs32GFSqw7yVTVOUHs"  # вставь свой токен
 
 logging.basicConfig(level=logging.INFO)
-
+logger = logging.getLogger(__name__);
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
 
@@ -983,6 +983,13 @@ async def next_day(callback: CallbackQuery):
         )
     else:
         await callback.message.answer("🎉 Ты прошёл все дни челленджа! Молодец! 🚀")
+
+
+@dp.errors()
+async def errors_handler(update, expection):
+    print(f"Ошибка! Update: {update}\nExpection: {expection}")
+    return True
+
 
 # Запуск
 async def main():
