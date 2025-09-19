@@ -1,13 +1,15 @@
 import logging
 import asyncio
+import os
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
-
-API_TOKEN = "8415854174:AAH-YGPRDmThzVFlMDs32GFSqw7yVTVOUHs"  # вставь свой токен
+from dotenv import load_dotenv
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__);
-bot = Bot(token=API_TOKEN)
+bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 # Прогресс пользователей {chat_id: {"day": int, "score": int, "q_index": int}}
