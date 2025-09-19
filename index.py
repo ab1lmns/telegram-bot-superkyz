@@ -5,13 +5,14 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 
 
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = "8415854174:AAH-xxVrp_F0VlaBCDjlDDcBZ6faK-mubaw"
 
 if not TOKEN:
     raise ValueError("BOT_TOKEN error")
 
 bot = Bot(token=TOKEN)
-dp = Dispatcher(bot)
+dp = Dispatcher()
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__);
 
