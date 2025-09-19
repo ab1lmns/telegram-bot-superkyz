@@ -3,10 +3,17 @@ import asyncio
 import os
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
-from dotenv import load_dotenv
-load_dotenv()
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 TOKEN = os.getenv("BOT_TOKEN")
 
+if not TOKEN:
+    raise ValueError("BOT_TOKEN error")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__);
 bot = Bot(token=TOKEN)
